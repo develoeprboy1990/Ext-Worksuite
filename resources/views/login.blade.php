@@ -37,22 +37,18 @@
                             <div class="w-100">
                                 <div class="bg-overlay"></div>
                                 <div class="d-flex h-50 flex-column">
-    
                                     <div class="p-4 mt-auto">
                                         <div class="row justify-content-center">
                                             <div class="col-lg-7">
                                                 <div class="text-center">
-                                                     <h2 class="mb-3">Manage Your Business Account</h2>
-                                                    
+                                                    <h2 class="mb-3">Manage Your Business Account</h2>
                                                     <div dir="ltr">
                                                         <div class="owl-carousel owl-theme auth-review-carousel" id="auth-review-carousel">
                                                             <div class="item">
                                                                 <div class="py-3">
                                                                     <p class="font-size-16 mb-4">CRM is a user-friendly, simple accounting software that tracks your business income and expenses, and organises your financial information for you, eliminating manual data entry.</p>
                                                                 </div>
-                                                                
                                                             </div>
-    
                                                         </div>
                                                     </div>
                                                 </div>
@@ -72,7 +68,7 @@
                                 <div class="d-flex flex-column h-100">
                                     <div class="mb-4 mb-md-5">
                                         <!-- display error -->
-   @if (session('error'))
+                                                        @if (session('error'))
 
  <div class="alert alert-danger p-3" id="success-alert">
                     
