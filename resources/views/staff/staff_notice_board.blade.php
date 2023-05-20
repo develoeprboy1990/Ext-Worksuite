@@ -81,7 +81,7 @@
                                          
                                          <td ><span class="badge  {{($value->Status=='Draft') ?'badge bg-warning' : 'bg-primary'}}">{{$value->Status}}</span></td>
                                          <td >{{dateformatman($value->Date)}}</td>
-                                         <td><a href="{{URL('/NoticeBoardView/').'/'.$value->NoticeBoardID}}" target="_blank"><i class="mdi mdi-eye"></i></a></td>
+                                         <td><a href="{{URL('/StaffNoticeBoardView/').'/'.$value->NoticeBoardID}}" target="_blank"><i class="mdi mdi-eye"></i></a></td>
                                          
                                         
                                          </tr>

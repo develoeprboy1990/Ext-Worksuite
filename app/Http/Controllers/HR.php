@@ -4250,7 +4250,7 @@ public function NoticeBoardView($id)
 
       $pagetitle='Daily Report';
 
-      $notice = DB::table('notice_board')->where('Status','Publish')->where('NoticeBoardID',$id)->get();
+      $notice = DB::table('notice_board')->where('NoticeBoardID',$id)->get();
 
       return view ('notice_board_view',compact('pagetitle','notice'));
       

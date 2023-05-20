@@ -737,7 +737,7 @@ public function StaffNoticeBoard()
      }
 
 
-public function NoticeBoardView($id)
+public function StaffNoticeBoardView($id)
      {
 
 

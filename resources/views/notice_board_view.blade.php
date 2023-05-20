@@ -58,14 +58,14 @@
                         <div class="row">
                             <div class="col-xl-12">
                                 <div class="card">
-                                    <div class="card-body">
+                                    <div class="card-body table-responsive">
 
-<table class="table table-sm align-middle table-nowrap mb-0">
+<table class="table mb-0">
                                         
                                          <tr >
-                                         <th style="width: 600px;" > </th>
-                                         <th style="width: 10px;" >Status</th>
-                                        <th style="width: 10px;" >Date</th>
+                                         <th  > Title</th>
+                                         <th >Status</th>
+                                        <th  >Date</th>
                                           </tr>
                                         
                                         <tbody>
@@ -76,15 +76,12 @@
                                          
                                          <td ><span class="badge  {{($value->Status=='Draft') ?'badge bg-warning' : 'bg-primary'}}">{{$value->Status}}</span></td>
                                          <td >{{dateformatman($value->Date)}}</td>
-                                      
-                                         
-                                        
                                          </tr>
                                         <tr>
-                                             <td><div style="width: 1000px !important; overflow: auto;" 
-                                                ><?php echo   $value->Detail; ?></div></td>
-                                            <td></td>
-                                            <td></td>
+                                             <td colspan="3">
+                                                <!-- <b>Discription:</b><br> -->
+                                                <div><?php echo $value->Detail; ?></div>
+                                            </td>
                                         </tr>
                                          @endforeach  
                                           @else
