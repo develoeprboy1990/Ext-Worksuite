@@ -3137,7 +3137,7 @@ div.dataTables_wrapper div.dataTables_filter input {
     content: "\F06D1"
 }
 .auth-full-bg {
-    background-color: rgba(85, 110, 230, .25);
+    background-color: #fff;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex

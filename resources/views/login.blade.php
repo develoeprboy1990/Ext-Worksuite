@@ -33,26 +33,28 @@
                 <div class="row g-0">
                     
                     <div class="col-md-8">
-                        <div class="auth-full-bg pt-lg-5 p-4" style="background-color: white !important;">
+                        <div class="auth-full-bg pt-lg-5 p-4">
                             <div class="w-100">
                                 <div class="bg-overlay"></div>
-                                <div class="d-flex h-100 flex-column">
-    <div class="text-center">
-        <h2>Manage Your Business Account
-</h2>
-<p style="padding-left: 230px; padding-right: 230px;">CRM is a user-friendly, simple accounting software that tracks your business income and expenses, and organises your financial information for you, eliminating manual data entry.
-
-</p>
-</div>
+                                <div class="d-flex h-50 flex-column">
+    
                                     <div class="p-4 mt-auto">
                                         <div class="row justify-content-center">
                                             <div class="col-lg-7">
                                                 <div class="text-center">
+                                                     <h2 class="mb-3">Manage Your Business Account</h2>
                                                     
-                                                    
-                                                    <img src="{{asset('assets/svg/graphic1.svg')}}" alt="" width="120%;">
-                                                    <!-- <img src="{{asset('assets/svg/banner.svg')}}" alt="" width="120%;"> -->
-                                                
+                                                    <div dir="ltr">
+                                                        <div class="owl-carousel owl-theme auth-review-carousel" id="auth-review-carousel">
+                                                            <div class="item">
+                                                                <div class="py-3">
+                                                                    <p class="font-size-16 mb-4">CRM is a user-friendly, simple accounting software that tracks your business income and expenses, and organises your financial information for you, eliminating manual data entry.</p>
+                                                                </div>
+                                                                
+                                                            </div>
+    
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
