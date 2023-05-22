@@ -2189,7 +2189,6 @@ $tax_treatments = DB::table('tax_treatment')->get();
 $customers = DB::table('customers')->get();
 return view ('customers',compact('pagetitle','customers','country','tax_treatments'));
 }
-
 public  function SaveCustomer(request $request)
 {
 ///////////////////////USER RIGHT & CONTROL ///////////////////////////////////////////
@@ -2252,6 +2251,40 @@ $id= DB::table('customers')->insertGetId($data);
 
 
 return redirect ('Customers')->with('error', 'Save Successfully.')->with('class','success');
+}
+public  function CustomerDelete($id)
+{
+///////////////////////USER RIGHT & CONTROL ///////////////////////////////////////////
+$allow= check_role(session::get('UserID'),'Party / Customers','Delete');
+if($allow[0]->Allow=='N')
+{
+return redirect()->back()->with('error', 'You access is limited')->with('class','danger');
+}
+////////////////////////////END SCRIPT ////////////////////////////////////////////////
+
+
+$id = DB::table('customers')->where('PartyID',$id)->delete();
+return redirect('Customers')->with('error','Deleted Successfully')->with('class','success');
+
+
+}
+public  function CustomerEdit($id)
+{
+///////////////////////USER RIGHT & CONTROL ///////////////////////////////////////////
+$allow= check_role(session::get('UserID'),'Party / Customers','Update');
+if($allow[0]->Allow=='N')
+{
+return redirect()->back()->with('error', 'You access is limited')->with('class','danger');
+}
+////////////////////////////END SCRIPT ////////////////////////////////////////////////
+session::put('menu','Party');
+$pagetitle='Party';
+
+$customer = DB::table('customers')->where('PartyID',$id)->get();
+$country = DB::table('country')->get();
+$tax_treatments = DB::table('tax_treatment')->get();
+
+return view ('customer_edit',compact('pagetitle','customer','country','tax_treatments'));
 }
 
 public function UserProfile()
