@@ -2040,23 +2040,6 @@ $pagetitle='Parties';
 $supplier = DB::table('party')->get();
 return view ('party',compact('pagetitle','supplier'));
 }
-public  function AddParties()
-{
-
- ///////////////////////USER RIGHT & CONTROL ///////////////////////////////////////////
- $allow= check_role(session::get('UserID'),'Supplier','Delete');
- 
-if($allow[0]->Allow=='N')
-{
-return redirect()->back()->with('error', 'You access is limited')->with('class','danger');
-}
-////////////////////////////END SCRIPT ////////////////////////////////////////////////
-session::put('menu','Party');
-$pagetitle='Parties';
-
-$supplier = DB::table('party')->get();
-return view ('add_party',compact('pagetitle','supplier'));
-}
 public  function SaveParties(request $request)
 {
 ///////////////////////USER RIGHT & CONTROL ///////////////////////////////////////////
@@ -2187,6 +2170,89 @@ return redirect('Parties')->with('error','Deleted Successfully')->with('class','
 }
 
 
+//Customer
+public  function Customers()
+{
+ ///////////////////////USER RIGHT & CONTROL ///////////////////////////////////////////
+ $allow= check_role(session::get('UserID'),'Supplier','Delete');
+ 
+if($allow[0]->Allow=='N')
+{
+return redirect()->back()->with('error', 'You access is limited')->with('class','danger');
+}
+////////////////////////////END SCRIPT ////////////////////////////////////////////////
+session::put('menu','Party');
+$pagetitle='Parties';
+
+$country = DB::table('country')->get();
+$tax_treatments = DB::table('tax_treatment')->get();
+$customers = DB::table('customers')->get();
+return view ('customers',compact('pagetitle','customers','country','tax_treatments'));
+}
+
+public  function SaveCustomer(request $request)
+{
+///////////////////////USER RIGHT & CONTROL ///////////////////////////////////////////
+$allow= check_role(session::get('UserID'),'Party / Customers','List / Create');
+if($allow[0]->Allow=='N')
+{
+return redirect()->back()->with('error', 'You access is limited')->with('class','danger');
+}
+////////////////////////////END SCRIPT ////////////////////////////////////////////////
+$this->validate($request,[
+'PartyType'=>'required',
+'TRN'=>'required',
+],
+[
+'CompanyName.required' => 'Company / Cusomter Name is required',
+]);
+
+$data = array(
+   'PartyType' => $request->input('PartyType'),
+   'Salutation' => $request->input('Salutation'),
+   'FirstName' => $request->input('FirstName'),
+   'LastName' => $request->input('LastName'),
+   'CompanyName' => $request->input('CompanyName'),
+   'Email' => $request->input('Email'),
+   'WorkPhone' => $request->input('WorkPhone'),
+   'Mobile' => $request->input('Mobile'),
+   'SkypeID' => $request->input('SkypeID'),
+   'Designation' => $request->input('Designation'),
+   'Department' => $request->input('Department'), 
+   'Website' => $request->input('Website'),
+   'TaxTreatment' => $request->input('TaxTreatment'), 
+   'TRN' => $request->input('TRN'),
+   'PlaceOfSupply' => $request->input('PlaceOfSupply'),
+   'Currency' => $request->input('Currency'), 
+   'OpeningBalance' => $request->input('OpeningBalance'),
+   'Facebook' => $request->input('Facebook'), 
+   'Twitter' => $request->input('Twitter'),
+   'BillingAttention' => $request->input('BillingAttention'),
+   'BillingCountry' => $request->input('BillingCountry'),
+   'BillingAddressLine1' => $request->input('BillingAddressLine1'),
+   'BillingAddressLine2' => $request->input('BillingAddressLine2'),
+   'BillingCity' => $request->input('BillingCity'),
+   'BillingState' => $request->input('BillingState'),
+   'BillingZipCode' => $request->input('BillingZipCode'),
+   'BillingPhone' => $request->input('BillingPhone'),
+   'BillingFax' => $request->input('BillingFax'),
+   'ShippingAttention' => $request->input('ShippingAttention'),
+   'ShippingCountry' => $request->input('ShippingCountry'),
+   'ShippingAddressLine1' => $request->input('ShippingAddressLine1'),
+   'ShippingAddressLine2' => $request->input('ShippingAddressLine2'),
+   'ShippingCity' => $request->input('ShippingCity'),
+   'ShippingState' => $request->input('ShippingState'),
+   'ShippingZipCode' => $request->input('ShippingZipCode'),
+   'ShippingPhone' => $request->input('ShippingPhone'),
+   'ShippingFax' => $request->input('ShippingFax'),
+   'Remarks' => $request->input('Remarks'),
+   );
+
+$id= DB::table('customers')->insertGetId($data);
+
+
+return redirect ('Customers')->with('error', 'Save Successfully.')->with('class','success');
+}
 
 public function UserProfile()
 {

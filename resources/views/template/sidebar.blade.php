@@ -31,7 +31,7 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         
-                        <li>  <a   href="{{URL('/AddParties')}}" key="t-products" >Add Customers</a></li>
+                        <li>  <a   href="{{URL('/Customers')}}" key="t-products" >New Customers</a></li>
                         <li>  <a   href="{{URL('/Parties')}}" key="t-products" >Customers</a></li>
                         <li>  <a   href="{{URL('/DeliveryChallan')}}" key="t-products" >Delivery Challans</a></li>
                         <li>  <a   href="{{URL('/Estimate')}}" key="t-products" >Estimate</a></li>
@@ -45,8 +45,6 @@
                         
                     </ul>
                 </li>
-
-
 
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">

@@ -107,12 +107,13 @@ Route::get('/SupplierDelete/{id}',[Accounts::class,'SupplierDelete']);
 
 
 Route::get('/Parties',[Accounts::class,'Parties']);
-Route::get('/AddParties',[Accounts::class,'AddParties']);
 Route::post('/SaveParties',[Accounts::class,'SaveParties']);
 Route::get('/PartiesEdit/{id}',[Accounts::class,'PartiesEdit']);
 Route::post('/PartiesUpdate/',[Accounts::class,'PartiesUpdate']);
 Route::get('/PartiesDelete/{id}',[Accounts::class,'PartiesDelete']);
 
+Route::get('/Customers',[Accounts::class,'Customers']);
+Route::post('/SaveCustomer',[Accounts::class,'SaveCustomer']);
 
 
 Route::get('/CheckUserRole1/{userid},{tablename},{action}',[Accounts::class,'CheckUserRole1']);

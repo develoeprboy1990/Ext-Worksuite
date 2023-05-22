@@ -26,7 +26,7 @@
             @endif            
             <div class="card shadow-sm">
                 <div class="card-body">
-                    <form action="{{URL('/SaveParties')}}" method="post">
+                    <form action="{{URL('/SaveCustomer')}}" method="post">
                         {{csrf_field()}}
                         <div>
                             <div class="mb-5">
@@ -49,16 +49,18 @@
                                     </div>                      
                                     <div class="mb-2 row">
                                         <label for="example-url-input" class="col-md-2 col-form-label fw-bold">Primary Contact</label>
-                                        <div class="col-md-2">
-                                            <select name="Active" class="form-select" >
-                                                <option value="Salutation" {{(old('Active')== 'Salutation') ? 'selected=selected':'' }}>Salutation</option>
+                                        <div class="col-md-1">
+                                            <select name="Salutation" class="form-select" >
+                                                <option value="">Salutation</option>
+                                                <option value="Mr." {{(old('Salutation')== 'Mr.') ? 'selected=selected':'' }}>Mr.</option>
+                                                <option value="Miss" {{(old('Salutation')== 'Miss') ? 'selected=selected':'' }}>Miss</option>
                                             </select> 
                                         </div>
                                         <div class="col-md-2">
-                                             <input class="form-control" type="text"  name="FirstName" value="{{old('FirstName')}}"  >
+                                             <input class="form-control" type="text"  name="FirstName" value="{{old('FirstName')}}" placeholder="First Name"  >
                                         </div>
                                         <div class="col-md-2">
-                                             <input class="form-control" type="text"  name="LastName" value="{{old('LastName')}}"  >
+                                             <input class="form-control" type="text"  name="LastName" value="{{old('LastName')}}" placeholder="Last Name" >
                                         </div>
                                     </div>
                                     <div class="mb-2 row">
@@ -143,7 +145,9 @@
                                                 <label for="example-tel-input" class="col-md-2 col-form-label fw-bold text-danger">Tax Treatment *</label>
                                                 <div class="col-md-4">
                                                     <select name="TaxTreatment" class="form-select" required >
-                                                        <option value="GCC VAT Registered" {{(old('GCC VAT Registered')== 'GCC VAT Registered') ? 'selected=selected':'' }}>GCC VAT Registered</option>
+                                                        @foreach($tax_treatments as $value)
+                                                            <option value="{{$value->TaxTreatmentName}}" {{(old('TaxTreatment')== $value->TaxTreatmentName) ? 'selected=selected': '' }}>{{$value->TaxTreatmentName}}</option>
+                                                        @endforeach
                                                     </select> 
                                                 </div>
                                             </div> 
@@ -151,16 +155,14 @@
                                             <div class="mb-2 row">
                                                 <label for="example-url-input" class="col-md-2 col-form-label fw-bold text-danger">Tax Registration <br>Number (TRN)*</label>
                                                 <div class="col-md-4">
-                                                    <input class="form-control mt-3" type="text"  name="TRN" value="{{old('TRN')}}" placeholder="Number" required>
+                                                    <input class="form-control mt-2" type="text"  name="TRN" value="{{old('TRN')}}" placeholder="Number" required>
                                                 </div>
                                             </div>
 
                                             <div class="mb-1 row">
                                                 <label for="example-tel-input" class="col-md-2 col-form-label fw-bold text-danger">Place Of Supply*</label>
                                                 <div class="col-md-4">
-                                                    <select name="PlaceOfSupply" class="form-select" required>
-                                                        <option value="Saudi Arabia" {{(old('Saudi Arabia')== 'GCC VAT Registered') ? 'selected=selected':'' }}>Saudi Arabia</option>
-                                                    </select> 
+                                                    <input class="form-control mt-3" type="text"  name="PlaceOfSupply" value="{{old('PlaceOfSupply')}}" required>
                                                 </div>
                                             </div> 
 
@@ -229,15 +231,17 @@
                                                     <label for="example-url-input" class="col-md-4 col-form-label fw-bold">Country / Region</label>
                                                     <div class="col-md-8">
                                                         <select name="BillingCountry" class="form-select" >
-                                                            <option value="Saudi Arabia" {{(old('Saudi Arabia')== 'Saudi Arabia') ? 'selected=selected':'' }}>Saudi Arabia</option>
+                                                            @foreach($country as $value)
+                                                            <option value="{{$value->CountryName}}" {{(old('BillingCountry')== $value->CountryName) ? 'selected=selected': '' }}>{{$value->CountryName}}</option>
+                                                            @endforeach
                                                     </select>
                                                     </div>
                                             </div>
                                             <div class="mb-2 row">
                                                 <label for="example-url-input" class="col-md-4 col-form-label fw-bold">Address</label>
                                                 <div class="col-md-8">
-                                                     <textarea name="BillingAddressLine1" required class="form-control" rows="3"  placeholder="Street1"></textarea><br>
-                                                     <textarea name="BillingAddressLine2" required class="form-control" rows="3" placeholder="Street2"></textarea>
+                                                     <textarea name="BillingAddressLine1" class="form-control" rows="3"  placeholder="Street1"></textarea><br>
+                                                     <textarea name="BillingAddressLine2" class="form-control" rows="3" placeholder="Street2"></textarea>
                                                      
                                                 </div>
                                             </div>
@@ -250,9 +254,7 @@
                                             <div class="mb-2 row">
                                                 <label for="example-url-input" class="col-md-4 col-form-label fw-bold">Sate</label>
                                                 <div class="col-md-8">
-                                                    <select name="BillingState" class="form-select" >
-                                                        <option value="State" {{(old('BillingState')== 'State') ? 'selected=selected':'' }}>State</option>
-                                                </select>
+                                                    <input class="form-control" type="text"  name="BillingState" value="{{old('BillingState')}}" >
                                                 </div>
                                             </div>
                                             <div class="mb-2 row">
@@ -286,15 +288,17 @@
                                                     <label for="example-url-input" class="col-md-4 col-form-label fw-bold">Country / Region</label>
                                                     <div class="col-md-8">
                                                         <select name="ShippingCountry" class="form-select" >
-                                                            <option value="Saudi Arabia" {{(old('Saudi Arabia')== 'Saudi Arabia') ? 'selected=selected':'' }}>Saudi Arabia</option>
+                                                            @foreach($country as $value)
+                                                            <option value="{{$value->CountryName}}" {{(old('ShippingCountry')== $value->CountryName) ? 'selected=selected': '' }}>{{$value->CountryName}}</option>
+                                                            @endforeach
                                                     </select>
                                                     </div>
                                             </div>
                                             <div class="mb-2 row">
                                                 <label for="example-url-input" class="col-md-4 col-form-label fw-bold">Address</label>
                                                 <div class="col-md-8">
-                                                     <textarea name="ShippingAddressLine1" required class="form-control" rows="3"  placeholder="Street1"></textarea><br>
-                                                     <textarea name="ShippingAddressLine2" required class="form-control" rows="3" placeholder="Street2"></textarea>
+                                                     <textarea name="ShippingAddressLine1" class="form-control" rows="3"  placeholder="Street1"></textarea><br>
+                                                     <textarea name="ShippingAddressLine2" class="form-control" rows="3" placeholder="Street2"></textarea>
                                                      
                                                 </div>
                                             </div>
@@ -307,9 +311,7 @@
                                             <div class="mb-2 row">
                                                 <label for="example-url-input" class="col-md-4 col-form-label fw-bold">Sate</label>
                                                 <div class="col-md-8">
-                                                    <select name="ShippingState" class="form-select" >
-                                                        <option value="State" {{(old('ShippingState')== 'State') ? 'selected=selected':'' }}>State</option>
-                                                </select>
+                                                    <input class="form-control" type="text"  name="ShippingState" value="{{old('ShippingState')}}"  >
                                                 </div>
                                             </div>
                                             <div class="mb-2 row">
@@ -339,7 +341,7 @@
 
                                         <label class="form-label">Remarks <span class="card-title-desc">(For Internal Use)</span></label>
                                         <div>
-                                            <textarea name="Remarks" required class="form-control" rows="3"></textarea>
+                                            <textarea name="Remarks" class="form-control" rows="3"></textarea>
                                         </div>
                                     
                                             
@@ -358,7 +360,7 @@
                     </form>        
                 </div>
                 <!-- card end here -->
-                <!-- <div class="row">
+                <div class="row">
                     <div class="col-lg-12">                                              
                         <div class="card">                              
                         <div class="card-body">
@@ -368,29 +370,31 @@
                                     <thead>
                                        <tr>
                                         <th>Party Code</th>
+                                        <th>Party Type</th>
                                         <th>Name</th>
                                         <th>TRN #</th>
-                                        <th>Address</th>
-                                        <th>City</th>
+                                        <th>Billing Address</th>
+                                        <th>Billing City</th>
                                         <th>Phone</th>
                                         <th>Email</th>                                         
                                         <th>Action</th>
                                       </tr>
                                      </thead>
                                     <tbody>                        
-                                        @foreach($supplier as $value)
+                                        @foreach($customers as $value)
                                         <tr>                            
                                         <td>{{$value->PartyID}}</td>
-                                        <td>{{$value->PartyName}}</td>
+                                        <td>{{$value->PartyType}}</td>
+                                        <td>{{$value->Salutation .''.$value->FirstName .' '.$value->FirstName }}</td>
                                         <td>{{$value->TRN}}</td>
-                                        <td>{{$value->Address}}</td>                                        
-                                        <td>{{$value->City}}</td>
-                                        <td>{{$value->Phone}}</td>
+                                        <td>{{$value->BillingAddressLine1}}</td>
+                                        <td>{{$value->BillingCity}}</td>
+                                        <td>{{$value->WorkPhone}}</td>
                                         <td>{{$value->Email}}</td>                                         
                                         <td>
                                             <div class="d-flex gap-1">
-                                            <a href="{{URL('/PartiesEdit/'.$value->PartyID)}}" class="text-secondary"><i class="mdi mdi-pencil font-size-15"></i></a>
-                                            <a href="#"  class="text-secondary" onclick="delete_confirm2('PartiesDelete',{{$value->PartyID}})"><i class="mdi mdi-delete font-size-15"></i></a>
+                                           <!--  <a href="{{URL('/PartiesEdit/'.$value->PartyID)}}" class="text-secondary"><i class="mdi mdi-pencil font-size-15"></i></a>
+                                            <a href="#"  class="text-secondary" onclick="delete_confirm2('PartiesDelete',{{$value->PartyID}})"><i class="mdi mdi-delete font-size-15"></i></a> -->
                                             </div>
                                         </td>
                                     </tr>
@@ -401,7 +405,7 @@
                     </div>
                 </div>
             </div>
-        </div> -->
+        </div>
             </div>
         </div>
     </div>
