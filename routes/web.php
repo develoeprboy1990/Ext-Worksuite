@@ -107,6 +107,7 @@ Route::get('/SupplierDelete/{id}',[Accounts::class,'SupplierDelete']);
 
 
 Route::get('/Parties',[Accounts::class,'Parties']);
+Route::get('/AddParties',[Accounts::class,'AddParties']);
 Route::post('/SaveParties',[Accounts::class,'SaveParties']);
 Route::get('/PartiesEdit/{id}',[Accounts::class,'PartiesEdit']);
 Route::post('/PartiesUpdate/',[Accounts::class,'PartiesUpdate']);

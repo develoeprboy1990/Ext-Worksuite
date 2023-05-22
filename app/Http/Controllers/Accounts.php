@@ -2040,6 +2040,23 @@ $pagetitle='Parties';
 $supplier = DB::table('party')->get();
 return view ('party',compact('pagetitle','supplier'));
 }
+public  function AddParties()
+{
+
+ ///////////////////////USER RIGHT & CONTROL ///////////////////////////////////////////
+ $allow= check_role(session::get('UserID'),'Supplier','Delete');
+ 
+if($allow[0]->Allow=='N')
+{
+return redirect()->back()->with('error', 'You access is limited')->with('class','danger');
+}
+////////////////////////////END SCRIPT ////////////////////////////////////////////////
+session::put('menu','Party');
+$pagetitle='Parties';
+
+$supplier = DB::table('party')->get();
+return view ('add_party',compact('pagetitle','supplier'));
+}
 public  function SaveParties(request $request)
 {
 ///////////////////////USER RIGHT & CONTROL ///////////////////////////////////////////
