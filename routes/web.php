@@ -820,7 +820,7 @@ Route::post('/QuarterlyReport', [FCBReports::class,'SearchQuarterlyReport']);
 Route::get('/TopLiveAccount', [FCBReports::class,'TopLiveAccount']);
 Route::post('/TopLiveAccount', [FCBReports::class,'SearchTopLiveAccount']);
 
-
+Route::get('/InvoiceSample/',[Accounts::class,'InvoiceSample']);
 
    });  
 // middleware end
@@ -896,3 +896,4 @@ route::get('/DepositExport/{type}',[HR::class,'DepositExport']);
 
 Route::get('/StaffNoticeBoard/',[Employee::class,'StaffNoticeBoard']);
 Route::get('/StaffNoticeBoardView/{id}',[Employee::class,'StaffNoticeBoardView']);
+

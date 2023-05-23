@@ -10276,5 +10276,22 @@ public function ExpenseReport1(request $request)
      }
 
 
+public  function InvoiceSample()
+{
+ ///////////////////////USER RIGHT & CONTROL ///////////////////////////////////////////
+ $allow= check_role(session::get('UserID'),'Supplier','Delete');
+ 
+if($allow[0]->Allow=='N')
+{
+return redirect()->back()->with('error', 'You access is limited')->with('class','danger');
+}
+////////////////////////////END SCRIPT ////////////////////////////////////////////////
+session::put('menu','Party');
+$pagetitle='Invoice Sample';
+
+return view ('invoice_sample',compact('pagetitle'));
+}
+
+
 
 } // end of controller
