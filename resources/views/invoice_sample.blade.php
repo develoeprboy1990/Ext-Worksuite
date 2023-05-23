@@ -35,7 +35,14 @@
                                     <div class="mb-2 row">
                                         <label for="example-url-input" class="col-md-2 col-form-label fw-bold text-danger">Invoice Date* </label>
                                         <div class="col-md-3">
-                                            <input class="form-control datepicker" type="date" id="example-date-input"> 
+                                            <!-- <input class="form-control datepicker" type="date" id="example-date-input"> -->
+
+                                            <div class="input-group" id="datepicker21">
+                                                <input type="text" name="Date" autocomplete="off" class="form-control" placeholder="dd/mm/yyyy" data-date-format="dd/mm/yyyy" data-date-container="#datepicker21" data-provide="datepicker" data-date-autoclose="true" value="{{date('d/m/Y')}}" id="example-date-input">
+                                                <span class="input-group-text"><i class="mdi mdi-calendar"></i></span>
+                                            </div>
+
+
                                         </div>
                                         <div class="col-md-3">
                                             <label for="example-url-input" class="col-md-2 col-form-label fw-bold" style="width: 30%;float: left;">Terms</label>
@@ -45,6 +52,8 @@
                                                     <option value="45">Net 45</option>
                                                     <option value="60">Net 60</option>
                                                     <option value="EOM">Due end of the month</option>
+                                                    <option value="EOSM">Due end of the next month</option>
+                                                    <option value="0">as on receipt </option>
                                                 </select>
                                         </div>
 
@@ -96,43 +105,39 @@ function addDays(theDate, days) {
     return new Date(theDate.getTime() + days*24*60*60*1000);
 }
 
-const monthNames = ["January", "February", "March", "April", "May", "June",
-  "July", "August", "September", "October", "November", "December"
-];
+
 
      $(document).on('change', '#example-date-input,#terms', function() {
 
-            var terms = $('#terms').find(":selected").val();   
-            var date = new Date($('#example-date-input').val());
+        var terms = $('#terms').find(":selected").val();   
 
+        var dateAr =$('#example-date-input').val().split('/')
+        var chosseDate = dateAr[2]+ '-' + dateAr[1] + '-' + dateAr[0];
 
-            
+        var date = new Date(chosseDate);
 
+        if(terms == 'EOM')
+        {
+            var y = date.getFullYear(), m = date.getMonth();
+            var firstDay = new Date(y, m, 1);
+            var dueDate = new Date(y, m + 1, 0);
+        }
+        else if(terms == 'EOSM')
+        {
+            var y = date.getFullYear(), m = date.getMonth();
+            var firstDay = new Date(y, m, 1);
+            var dueDate = new Date(y, m + 2, 0);
+        }
+        else{
+            var dueDate = addDays(date, terms);
+        }
 
-            if(terms == 'EOM')
-            {
-                var y = date.getFullYear(), m = date.getMonth();
-                var firstDay = new Date(y, m, 1);
-                var lastDay = new Date(y, m + 1, 0);
-
-                var day = lastDay.getDate();
-                var month = monthNames[lastDay.getMonth()];
-                var year = lastDay.getFullYear();
-                var dropoffDate =[day, month, year].join(' ');
-                //alert(dropoffDate);
-                $('.dropoffDate').val(dropoffDate);
-
-            }
-            else{
-            var newDate = addDays(date, terms);
-            var day = newDate.getDate();
-            var month = monthNames[newDate.getMonth()];
-            var year = newDate.getFullYear();
-            var dropoffDate =[day, month, year].join(' ');
-            //alert(dropoffDate);
-            $('.dropoffDate').val(dropoffDate);
-
-            }
+        var day = ('0' + dueDate.getDate()).slice(-2);
+        var month = ('0' + (dueDate.getMonth()+1)).slice(-2);
+        var year = dueDate.getFullYear();
+        var dropoffDate =[day, month, year].join('/');
+        //alert(dropoffDate);
+        $('.dropoffDate').val(dropoffDate);
 
 
 

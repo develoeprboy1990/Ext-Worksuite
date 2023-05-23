@@ -26,7 +26,7 @@
                     </div>
                     @endif
                     <div class="card shadow-sm">
-                        <form action="{{URL('/PartiesUpdate')}}" method="post">
+                        <form action="{{URL('/CustomerUpdate')}}" method="post">
                             <div class="card-body">
                             {{csrf_field()}}
                             <input type="hidden" name="PartyID" value="{{$customer[0]->PartyID}}">
@@ -76,7 +76,7 @@
                                     ?> 
 
 
-                                    <div class="mb-2 row">
+                             <div class="mb-2 row">
                                         <label for="example-url-input" class="col-md-2 col-form-label fw-bold">Cutomer Type</label>
                                         <div class="col-md-2 mt-2 ">
                                             <input class="form-check-input" type="radio" name="PartyType"
@@ -159,6 +159,8 @@
                                             <input class="form-control" type="text"  name="Website" value="{{$Website}}"  >
                                         </div>  
                                     </div>
+                                       
+                                  
                                 
                             <!-- Nav tabs -->
                             <ul class="nav nav-tabs nav-tabs-custom" role="tablist">
@@ -268,7 +270,7 @@
                                             <div class="mb-2 row">
                                                     <label for="example-url-input" class="col-md-4 col-form-label fw-bold">Attention</label>
                                                     <div class="col-md-8">
-                                                        <input class="form-control" type="text"  name="BillingAttention" value="{{$BillingAttention')}}"  >
+                                                        <input class="form-control" type="text"  name="BillingAttention" value="{{$BillingAttention}}"  >
                                                     </div>
                                             </div>
                                             <div class="mb-2 row">
@@ -285,8 +287,8 @@
                                             <div class="mb-2 row">
                                                 <label for="example-url-input" class="col-md-4 col-form-label fw-bold">Address</label>
                                                 <div class="col-md-8">
-                                                     <textarea name="BillingAddressLine1" class="form-control" rows="3"  placeholder="Street1"></textarea><br>
-                                                     <textarea name="BillingAddressLine2" class="form-control" rows="3" placeholder="Street2"></textarea>
+                                                     <textarea name="BillingAddressLine1" class="form-control" rows="3"  placeholder="Street1">{{ $BillingAddressLine1 }}</textarea><br>
+                                                     <textarea name="BillingAddressLine2" class="form-control" rows="3" placeholder="Street2">{{ $BillingAddressLine2 }}</textarea>
                                                      
                                                 </div>
                                             </div>
@@ -321,6 +323,7 @@
                                                 </div>
                                             </div>                                           
                                         </div>
+
                                         <div class="col-md-6">
                                             <h4 class="card-title">SHIPPING ADDRESS</h4>
                                             <div class="mb-2 row">
@@ -342,8 +345,8 @@
                                             <div class="mb-2 row">
                                                 <label for="example-url-input" class="col-md-4 col-form-label fw-bold">Address</label>
                                                 <div class="col-md-8">
-                                                     <textarea name="ShippingAddressLine1" class="form-control" rows="3"  placeholder="Street1"></textarea><br>
-                                                     <textarea name="ShippingAddressLine2" class="form-control" rows="3" placeholder="Street2"></textarea>
+                                                     <textarea name="ShippingAddressLine1" class="form-control" rows="3"  placeholder="Street1">{{ $ShippingAddressLine1 }}</textarea><br>
+                                                     <textarea name="ShippingAddressLine2" class="form-control" rows="3" placeholder="Street2">{{ $ShippingAddressLine2 }}</textarea>
                                                      
                                                 </div>
                                             </div>
@@ -378,6 +381,7 @@
                                                 </div>
                                             </div>    
                                         </div>
+
                                     </div>     
                                 </div>
                                 <div class="tab-pane" id="remarks" role="tabpanel">
@@ -386,7 +390,7 @@
 
                                         <label class="form-label">Remarks <span class="card-title-desc">(For Internal Use)</span></label>
                                         <div>
-                                            <textarea name="Remarks" class="form-control" rows="3"></textarea>
+                                            <textarea name="Remarks" class="form-control" rows="3">Remarks</textarea>
                                         </div>
                                     
                                             
@@ -402,7 +406,7 @@
                             </div>
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-primary me-1 waves-effect aves-float waves-light">Update</button>
-                                <a href="{{URL('/Parties')}}" class="btn btn-outline-secondary waves-effect">Cancel</a>
+                                <a href="{{URL('/Customers')}}" class="btn btn-outline-secondary waves-effect">Cancel</a>
                             </div>
                             </div>
                         </form>

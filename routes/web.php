@@ -116,6 +116,7 @@ Route::get('/Customers',[Accounts::class,'Customers']);
 Route::post('/SaveCustomer',[Accounts::class,'SaveCustomer']);
 Route::get('/CustomerDelete/{id}',[Accounts::class,'CustomerDelete']);
 Route::get('/CustomerEdit/{id}',[Accounts::class,'CustomerEdit']);
+Route::post('/CustomerUpdate/',[Accounts::class,'CustomerUpdate']);
 
 Route::get('/CheckUserRole1/{userid},{tablename},{action}',[Accounts::class,'CheckUserRole1']);
 

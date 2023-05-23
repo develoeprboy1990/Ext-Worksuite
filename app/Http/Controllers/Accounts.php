@@ -2287,6 +2287,67 @@ $tax_treatments = DB::table('tax_treatment')->get();
 return view ('customer_edit',compact('pagetitle','customer','country','tax_treatments'));
 }
 
+public  function CustomerUpdate(request $request)
+{
+///////////////////////USER RIGHT & CONTROL ///////////////////////////////////////////
+$allow= check_role(session::get('UserID'),'Party / Customers','Update');
+if($allow[0]->Allow=='N')
+{
+return redirect()->back()->with('error', 'You access is limited')->with('class','danger');
+}
+////////////////////////////END SCRIPT ////////////////////////////////////////////////
+$this->validate($request,[
+'PartyType'=>'required',
+'TRN'=>'required',
+],
+[
+'CompanyName.required' => 'Company / Cusomter Name is required',
+]);
+
+$data = array(
+   'PartyType' => $request->input('PartyType'),
+   'Salutation' => $request->input('Salutation'),
+   'FirstName' => $request->input('FirstName'),
+   'LastName' => $request->input('LastName'),
+   'CompanyName' => $request->input('CompanyName'),
+   'Email' => $request->input('Email'),
+   'WorkPhone' => $request->input('WorkPhone'),
+   'Mobile' => $request->input('Mobile'),
+   'SkypeID' => $request->input('SkypeID'),
+   'Designation' => $request->input('Designation'),
+   'Department' => $request->input('Department'), 
+   'Website' => $request->input('Website'),
+   'TaxTreatment' => $request->input('TaxTreatment'), 
+   'TRN' => $request->input('TRN'),
+   'PlaceOfSupply' => $request->input('PlaceOfSupply'),
+   'Currency' => $request->input('Currency'), 
+   'OpeningBalance' => $request->input('OpeningBalance'),
+   'Facebook' => $request->input('Facebook'), 
+   'Twitter' => $request->input('Twitter'),
+   'BillingAttention' => $request->input('BillingAttention'),
+   'BillingCountry' => $request->input('BillingCountry'),
+   'BillingAddressLine1' => $request->input('BillingAddressLine1'),
+   'BillingAddressLine2' => $request->input('BillingAddressLine2'),
+   'BillingCity' => $request->input('BillingCity'),
+   'BillingState' => $request->input('BillingState'),
+   'BillingZipCode' => $request->input('BillingZipCode'),
+   'BillingPhone' => $request->input('BillingPhone'),
+   'BillingFax' => $request->input('BillingFax'),
+   'ShippingAttention' => $request->input('ShippingAttention'),
+   'ShippingCountry' => $request->input('ShippingCountry'),
+   'ShippingAddressLine1' => $request->input('ShippingAddressLine1'),
+   'ShippingAddressLine2' => $request->input('ShippingAddressLine2'),
+   'ShippingCity' => $request->input('ShippingCity'),
+   'ShippingState' => $request->input('ShippingState'),
+   'ShippingZipCode' => $request->input('ShippingZipCode'),
+   'ShippingPhone' => $request->input('ShippingPhone'),
+   'ShippingFax' => $request->input('ShippingFax'),
+   'Remarks' => $request->input('Remarks'),
+);
+$id= DB::table('customers')->where('PartyID',$request->input('PartyID'))->update($data);
+return redirect ('Customers')->with('error', 'Updated Successfully.')->with('class','success');
+}
+
 public function UserProfile()
 {
 $v_users= DB::table('user')->where('UserID',session::get('UserID'))->get();
