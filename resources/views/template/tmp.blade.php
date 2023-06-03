@@ -1,11 +1,6 @@
-
-<!doctype html>
+<!DOCTYPE HTML>
 <html lang="en">
-
-    
-<!-- Mirrored from themesbrand.com/skote-django/layouts/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 16 May 2021 18:20:42 GMT -->
 <head>
-        
         <meta charset="utf-8" />
         <title>@yield('title')</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -211,10 +206,6 @@ $(document).on('select2:open', () => {
 @include('template.footer')
 <!-- end of footer -->
 
-       
-
-         
-
         <!-- JAVASCRIPT -->
         <script src="{{URL('/')}}/assets/libs/jquery/jquery.min.js"></script>
         <script src="{{URL('/')}}/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -305,19 +296,11 @@ $(document).on('select2:open', () => {
 
         <!-- toastr init -->
         <script src="{{URL('/')}}/assets/js/pages/toastr.init.js"></script>
-
-
-        
-
     </body>
-
-
 <script>
     $("#success-alert").fadeTo(4000, 500).slideUp(100, function(){
      $("#success-alert").slideUp(500);
     $("#success-alert").alert('close');
 });
 </script>
-
-<!-- Mirrored from themesbrand.com/skote-django/layouts/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 16 May 2021 18:22:06 GMT -->
 </html>

@@ -26,6 +26,10 @@ use App\Http\Controllers\ChartOfAccount;
 //HR
 use App\Http\Controllers\HR;
 use App\Http\Controllers\Employee;
+
+//PMS
+use App\Http\Controllers\Work;
+
  
    
  Route::get('/base1/',[KM::class,'base1']);
@@ -822,6 +826,25 @@ Route::get('/TopLiveAccount', [FCBReports::class,'TopLiveAccount']);
 Route::post('/TopLiveAccount', [FCBReports::class,'SearchTopLiveAccount']);
 
 Route::get('/InvoiceSample/',[Accounts::class,'InvoiceSample']);
+
+//Projects
+Route::get('/Projects',[Work::class,'Projects']);
+Route::get('/AddProject',[Work::class,'AddProject']);
+Route::post('/SaveProject',[Work::class,'SaveProject']);
+Route::get('/ProjectDelete/{id}',[Work::class,'ProjectDelete']);
+Route::get('/ProjectEdit/{id}',[Work::class,'ProjectEdit']);
+Route::post('/ProjectUpdate/',[Work::class,'ProjectUpdate']);
+route::get('/ProjectView/{id}',[Work::class,'ProjectView']);
+route::get('/ProjectViewPDF/{id}',[Work::class,'EstimateViewPDF']);
+
+
+//Tasks
+Route::get('/Tasks',[Work::class,'Tasks']);
+Route::get('/AddTask',[Work::class,'AddTask']);
+Route::post('/SaveTask',[Work::class,'SaveTask']);
+Route::get('/TaskDelete/{id}',[Work::class,'TaskDelete']);
+Route::get('/TaskEdit/{id}',[Work::class,'TaskEdit']);
+Route::post('/TaskUpdate/',[Work::class,'TaskUpdate']);
 
    });  
 // middleware end
