@@ -198,7 +198,7 @@
                 </li>
 
                 <li>
-                    <a href="{{URL('/Employee')}}" class="waves-effect">
+                    <a href="{{URL('/Tasks')}}" class="waves-effect">
                         <i class="bx bx-task"></i>
                         <span key="t-calendar">Tasks</span>
                     </a>

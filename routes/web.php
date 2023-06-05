@@ -845,6 +845,7 @@ Route::post('/SaveTask',[Work::class,'SaveTask']);
 Route::get('/TaskDelete/{id}',[Work::class,'TaskDelete']);
 Route::get('/TaskEdit/{id}',[Work::class,'TaskEdit']);
 Route::post('/TaskUpdate/',[Work::class,'TaskUpdate']);
+route::get('/TaskView/{id}',[Work::class,'TaskView']);
 
    });  
 // middleware end

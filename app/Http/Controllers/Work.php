@@ -88,8 +88,7 @@ $departments = DB::table('department')->get();
 $employee = DB::table('v_employee')->get();
 return view ('work.project_add',compact('pagetitle','estimates','departments','employee','customers','country','tax_treatments'));
 }
-
-public  function SaveCustomer(request $request)
+public  function SaveProject(request $request)
 {
 ///////////////////////USER RIGHT & CONTROL ///////////////////////////////////////////
 $allow= check_role(session::get('UserID'),'Party / Customers','List / Create');
@@ -152,7 +151,7 @@ $id= DB::table('customers')->insertGetId($data);
 
 return redirect ('Customers')->with('error', 'Save Successfully.')->with('class','success');
 }
-public  function CustomerDelete($id)
+public  function ProjectDelete($id)
 {
 ///////////////////////USER RIGHT & CONTROL ///////////////////////////////////////////
 $allow= check_role(session::get('UserID'),'Party / Customers','Delete');
@@ -168,7 +167,7 @@ return redirect('Customers')->with('error','Deleted Successfully')->with('class'
 
 
 }
-public  function CustomerEdit($id)
+public  function ProjectEdit($id)
 {
 ///////////////////////USER RIGHT & CONTROL ///////////////////////////////////////////
 $allow= check_role(session::get('UserID'),'Party / Customers','Update');
@@ -186,8 +185,7 @@ $tax_treatments = DB::table('tax_treatment')->get();
 
 return view ('customer_edit',compact('pagetitle','customer','country','tax_treatments'));
 }
-
-public  function CustomerUpdate(request $request)
+public  function ProjectUpdate(request $request)
 {
 ///////////////////////USER RIGHT & CONTROL ///////////////////////////////////////////
 $allow= check_role(session::get('UserID'),'Party / Customers','Update');
@@ -247,13 +245,10 @@ $data = array(
 $id= DB::table('customers')->where('PartyID',$request->input('PartyID'))->update($data);
 return redirect ('Customers')->with('error', 'Updated Successfully.')->with('class','success');
 }
-
-
-
-  public function ProjectView($id)
-  {
+public function ProjectView($id)
+{
     // dd('hello');
-    $pagetitle = 'Project';
+    $pagetitle = 'Project Details';
     $estimate = DB::table('v_estimate_master')->where('EstimateMasterID', $id)->get();
     $estimate_detail = DB::table('v_estimate_detail')->where('EstimateMasterID', $id)->get();
     $company = DB::table('company')->get();
@@ -268,5 +263,60 @@ return redirect ('Customers')->with('error', 'Updated Successfully.')->with('cla
   }
 
 
+//Tasks
+public  function Tasks()
+{
+ ///////////////////////USER RIGHT & CONTROL ///////////////////////////////////////////
+ $allow= check_role(session::get('UserID'),'Supplier','Delete');
+ 
+if($allow[0]->Allow=='N')
+{
+return redirect()->back()->with('error', 'You access is limited')->with('class','danger');
+}
+////////////////////////////END SCRIPT ////////////////////////////////////////////////
+session::put('menu','Party');
+$pagetitle='Tasks';
+
+$country = DB::table('country')->get();
+$customers = DB::table('customers')->get();
+return view ('work.tasks',compact('pagetitle','customers','country'));
+}
+
+public  function AddTask()
+{
+ ///////////////////////USER RIGHT & CONTROL ///////////////////////////////////////////
+ $allow= check_role(session::get('UserID'),'Supplier','Delete');
+ 
+if($allow[0]->Allow=='N')
+{
+return redirect()->back()->with('error', 'You access is limited')->with('class','danger');
+}
+////////////////////////////END SCRIPT ////////////////////////////////////////////////
+session::put('menu','Party');
+$pagetitle='Add Task';
+
+$country = DB::table('country')->get();
+$customers = DB::table('customers')->get();
+$estimates = DB::table('v_estimate_master')->get();
+$departments = DB::table('department')->get();
+$employee = DB::table('v_employee')->get();
+return view ('work.task_add',compact('pagetitle','estimates','departments','employee','customers','country'));
+}
+public function TaskView($id)
+{
+    // dd('hello');
+    $pagetitle = 'Task Details';
+    $estimate = DB::table('v_estimate_master')->where('EstimateMasterID', $id)->get();
+    $estimate_detail = DB::table('v_estimate_detail')->where('EstimateMasterID', $id)->get();
+    $company = DB::table('company')->get();
+    
+    session()->forget('VHNO');
+
+    session::put('VHNO',$estimate[0]->EstimateNo);
+
+
+
+     return view('work.task_view', compact('estimate', 'pagetitle', 'company', 'estimate_detail'));
+  }
 
 } // end of controller
