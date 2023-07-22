@@ -94,7 +94,6 @@ $data=DB::table('user')->where('Email', '=', $username )
 ->where('Password', '=', $password )
 ->where('Active', '=', 'Yes' )
 ->get();
-
 $company = DB::table('company')->get();
 
 if(count($data)>0)
@@ -106,6 +105,7 @@ Session::put('UserType', $data[0]->UserType);
 Session::put('BranchID', $data[0]->BranchID);
 Session::put('Currency', $company[0]->Currency);
 Session::put('CompanyName', $company[0]->Name . ' '.$company[0]->Name2);
+// Session::put('isAdmin', $data[0]->isAdmin);
 
 
 

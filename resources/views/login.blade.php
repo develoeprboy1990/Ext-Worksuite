@@ -150,7 +150,7 @@
  
                                     <div class="mt-5 mt-md-5 text-center">
 
-                                                                     <p> &copy; Copyright {{date('Y')}} {{$company[0]->Name}}. All rights reserved. </p>
+                                                                     <p> &copy; Copyright {{date('Y')}} {{$company[0]->Name ?? ''}}. All rights reserved. </p>
 
                                     </div>
                                 </div>

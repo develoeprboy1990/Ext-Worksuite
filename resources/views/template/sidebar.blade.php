@@ -14,7 +14,7 @@
                     
                 </li>
 
-                    <li>
+                    <!-- <li>
                     <a href="{{URL('/Item')}}" class="waves-effect">
                         <i class="bx bx bx-basket"></i>
                        
@@ -61,7 +61,6 @@
                 
                 <li>  <a   href="{{URL('/Bill')}}" key="t-products" >Bills</a></li>
                 <li>  <a   href="{{URL('/PurchasePayment')}}" key="t-products" >Payments Made</a></li>
-                <!-- <li>  <a   href="{{URL('/')}}" key="t-products" >Recurring Bills</a></li> -->
                 <li>  <a   href="{{URL('/DebitNote')}}" key="t-products" >Debit Note Credit</a></li>
                          
                         
@@ -155,7 +154,6 @@
                          <li><a href="{{URL('/Letter')}}" key="t-products">Letter Templates</a></li>
                          <li><a href="{{URL('/Team')}}" key="t-products">Team Structure</a></li>
                          <li><a href="{{URL('/Users')}}" key="t-products">Users</a></li> 
-                         <!-- <li><a href="{{URL('/Role')}}" key="t-products">User Rights & Control</a></li>  -->
 
                      
                     </ul>
@@ -179,7 +177,7 @@
    
                         
                     </ul>
-                </li>
+                </li> -->
 
 
                 <li>
@@ -208,22 +206,42 @@
                         
                     </ul>
                 </li>
+
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="bx bx-briefcase"></i>
+                        <span key="t-ecommerce">Jobs</span>
+                    </a>
+                <ul class="sub-menu" aria-expanded="false">
+                        
+                <li>
+                    <a href="{{URL('/jobs-list')}}" class="waves-effect">
+                        <i class="bx bx-briefcase-alt-2"></i>
+                        <span key="t-dashboards">Job List</span>
+                    </a>
+                  
+                </li>
+
+   
+                        
+                    </ul>
+                </li>
             
 
 
-                <li>
-                    <a href="{{URL('/AdjustmentBalance')}}" class="waves-effect">
-                        <i class="mdi mdi-scale-balance"></i>
-                        <span key="t-calendar">Adjustment Balance</span>
-                    </a>
-                </li>
-                
-                <li>
-                    <a href="{{URL('/ChartOfAcc')}}" class="waves-effect">
-                        <i class="mdi mdi-text-box-check-outline"></i>
-                        <span key="t-calendar">Chart of Account</span>
-                    </a>
-                </li>
+                    <!-- <li>
+                        <a href="{{URL('/AdjustmentBalance')}}" class="waves-effect">
+                            <i class="mdi mdi-scale-balance"></i>
+                            <span key="t-calendar">Adjustment Balance</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="{{URL('/ChartOfAcc')}}" class="waves-effect">
+                            <i class="mdi mdi-text-box-check-outline"></i>
+                            <span key="t-calendar">Chart of Account</span>
+                        </a>
+                    </li> -->
                 
              
                 
@@ -240,7 +258,7 @@
                     </a>
                 </li>
                 
-                <li>
+                <!-- <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="mdi mdi-finance"></i>
                         <span key="t-ecommerce">Party Reports</span>
@@ -252,7 +270,6 @@
                         <li><a href="{{URL('/PartyBalance')}}" key="t-products" >Party Balance</a></li>
                         <li><a href="{{URL('/PartyYearlyBalance')}}" key="t-products" >Yearly Report</a></li>
                         <li><a href="{{URL('/PartyAgingPDF')}}" key="t-products" >Aging Report</a></li>
-                        <!-- <li><a href="#" key="t-products" >Party Analysis</a></li> -->
                         <li><a href="{{URL('/PartyList')}}" key="t-products" >Party List</a></li>
                         <li><a href="{{URL('/PartyWiseSale')}}" key="t-products" >Partywise Sale</a></li>
                         <li><a href="{{URL('/OutStandingInvoice')}}" key="t-products" >Outstanding Invoices</a></li>
@@ -266,8 +283,8 @@
                         
                         
                     </ul>
-                </li>
-                <li>
+                </li> -->
+               <!--  <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="mdi mdi-chart-areaspline"></i>
                         <span key="t-ecommerce">Supplier Reports</span>
@@ -284,45 +301,9 @@
                         
                         
                     </ul>
-                </li>
-                <li>
-                    <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <i class="mdi mdi-chart-bell-curve-cumulative"></i>
-                        <span key="t-ecommerce">Account Reports</span>
-                    </a>
-                    <ul class="sub-menu" aria-expanded="false">
-                        
-                       
+                </li> -->
 
-
-                        <li><a key="t-products" href="{{URL('/DailyIncomeExpense')}}">Daily Income / Expense</a></li>
-
-
-                        <li><a key="t-products" href="{{URL('/CashbookReport')}}">Cash Book</a></li>
-                        <!--                  <li><a key="t-products" href="#">Sales man wise cash book</a></li>
-                        --> 
-                        <li><a key="t-products" href="{{URL('/DaybookReport')}}">Day book</a></li>
-                        <li><a key="t-products" href="{{URL('/GeneralLedger')}}">General Ledger</a></li>
-                        <li><a key="t-products" href="{{URL('/TrialBalance')}}">Trial Balance</a></li>
-                        <li><a key="t-products" href="{{URL('/TrialBalanceActivity')}}">Trial with Activity</a></li>
-                        <li><a key="t-products" href="#">Yearly Summary</a></li>
-                        <li><a key="t-products" href="{{URL('/ProfitAndLoss')}}">Profit & Loss</a></li>
-                        <li><a key="t-products" href="{{URL('/BalanceSheet')}}">Balance Sheet</a></li>
-                        <li><a key="t-products" href="{{URL('/PartyBalance')}}">party balance</a></li>
-                        <!--   <li><a key="t-products" href="#">ageing report</a></li>
-                        <li><a key="t-products" href="#">cash flow</a></li> -->
-                        <li><a key="t-products" href="{{URL('/TaxOverallReport')}}">Tax Report</a></li>
-                        <li><a key="t-products" href="{{URL('/ReconcileReport')}}">Bank Reconciliation</a>
-
-                        <li><a key="t-products" href="{{URL('/InvoiceSummary')}}">Invoice Summary list</a></li>
-                        <li><a key="t-products" href="{{URL('/Inventory')}}">Stock Inventory</a>
-                        <!-- <li><a key="t-products" href="{{URL('/TicketRegister')}}">Invoice Detail</a></li> -->
-                        
-                        
-                    </ul>
-                </li>
-
-                 <li>
+                <!--  <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="mdi mdi-folder font-size-16 text-warning me-2"></i>
                         <span key="t-ecommerce">Documents</span>
@@ -335,7 +316,7 @@
                         
                         
                     </ul>
-                </li>
+                </li> -->
 
                 <li>
                     <a href="{{URL('/Backup')}}" class="waves-effect">

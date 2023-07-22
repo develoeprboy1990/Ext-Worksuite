@@ -16,3 +16,16 @@ user_role
 
 rest of the tables sql file are located in project database folder.
 after that move HRM role table data into Accounting.role
+
+
+-------------------------------
+
+date: 22-7-2023
+
+ALTER TABLE `migrations` CHANGE `id` `id` INT UNSIGNED NOT NULL AUTO_INCREMENT;
+
+
+php artisan migrate --path=database/migrations/2023_07_22_073017_create_jobs_table.php
+
+
+-----------------------------------

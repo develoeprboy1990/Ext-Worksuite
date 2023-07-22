@@ -20,6 +20,7 @@ use App\Http\Controllers\EstimateController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\User;
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\JobController;
 use App\Http\Controllers\Documents;
 use App\Http\Controllers\ChartOfAccount;
 
@@ -846,6 +847,15 @@ Route::get('/TaskDelete/{id}',[Work::class,'TaskDelete']);
 Route::get('/TaskEdit/{id}',[Work::class,'TaskEdit']);
 Route::post('/TaskUpdate/',[Work::class,'TaskUpdate']);
 route::get('/TaskView/{id}',[Work::class,'TaskView']);
+
+
+
+//Jobs
+Route::get('/jobs-list',[JobController::class,'index']);
+Route::get('/add-job',[JobController::class,'create']);
+Route::post('/saveJob',[JobController::class,'store']);
+Route::get('/deleteJob/{id}',[JobController::class,'destroy']);
+
 
    });  
 // middleware end
